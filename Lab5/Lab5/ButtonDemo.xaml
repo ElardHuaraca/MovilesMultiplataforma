@@ -1,0 +1,17 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Lab5.ButtonDemo">
+    <ContentPage.Content>
+        <StackLayout>
+            <Label x:Name="labeltext"
+                   Text="Click the Button below"
+                   VerticalOptions="CenterAndExpand"
+                   HorizontalOptions="Center"></Label>
+            <Button Text="Click to rotate text"
+                    VerticalOptions="CenterAndExpand"
+                    HorizontalOptions="Center"
+                    Clicked="Button_Clicked"></Button>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

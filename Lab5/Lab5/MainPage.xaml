@@ -1,0 +1,29 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Lab5.MainPage">
+
+    <StackLayout>
+        <StackLayout>
+            <Button x:Name="Item3" Text="Datepicker"></Button>
+            <Button x:Name="Item14" Text="ListViewSource"></Button>
+        </StackLayout>
+        <StackLayout Orientation="Horizontal">
+            <StackLayout>
+                <Button x:Name="Item1" Text="ButtonDemo"></Button>
+                <Button x:Name="Item2" Text="ButtonCode"></Button>
+                <Button x:Name="Item4" Text="EditorDemo"></Button>
+                <Button x:Name="Item5" Text="EditoCode"></Button>
+                <Button x:Name="Item6" Text="EntryDemo"></Button>
+                <Button x:Name="Item7" Text="EntryCode"></Button>
+            </StackLayout>
+            <StackLayout>
+                <Button x:Name="Item8" Text="LabelDemo"></Button>
+                <Button x:Name="Item9" Text="LabelCode"></Button>
+                <Button x:Name="Item10" Text="LocalImage"></Button>
+                <Button x:Name="Item11" Text="EmbeddedImage"></Button>
+            </StackLayout>
+        </StackLayout>
+    </StackLayout>
+
+</ContentPage>
