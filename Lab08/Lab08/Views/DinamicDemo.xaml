@@ -1,0 +1,23 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Lab08.Views.DinamicDemo">
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <Style x:Key="baseStyle" TargetType="View">
+            </Style>
+            <Style x:Key="blueSearchBarStyle" TargetType="SearchBar" BasedOn="{StaticResource baseStyle}">
+                <Setter Property="TextColor" Value="Blue"/>
+            </Style>
+            <Style x:Key="greenSearchBarStyle" TargetType="SearchBar" BasedOn="{StaticResource baseStyle}">
+                <Setter Property="TextColor" Value="Green"/>
+            </Style>
+        </ResourceDictionary>
+    </ContentPage.Resources>
+    <ContentPage.Content>
+        <StackLayout Padding="0,20,0,0">
+            <SearchBar Placeholder="Control sobre la barra de busqueda" Style="{DynamicResource searchStyle}"/>
+            <Button x:Name="btnBuscar" Text="Buscar" HorizontalOptions="Center"/>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

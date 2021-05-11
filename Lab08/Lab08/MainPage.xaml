@@ -1,0 +1,18 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Lab08.MainPage">
+
+    <StackLayout>
+        <Button x:Name="btnExplicit" Text="Explicit Demo" HorizontalOptions="Center" VerticalOptions="Center"/>
+        <Button x:Name="btnExplicitControl" Text="Explicit Control Demo" HorizontalOptions="Center" VerticalOptions="Center"/>
+        <Button x:Name="btnImplicit" Text="Implicit Demo" HorizontalOptions="Center" VerticalOptions="Center"/>
+        <Button x:Name="btnImplicitControl" Text="Explicit Control Demo" HorizontalOptions="Center" VerticalOptions="Center"/>
+        <Button x:Name="btnGlobal" Text="Global Demo" HorizontalOptions="Center" VerticalOptions="Center"/>
+        <Button x:Name="btnInheritance" Text="Inheritance Demo" HorizontalOptions="Center" VerticalOptions="Center"/>
+        <Button x:Name="btnDynamic" Text="Dynamic Demo" HorizontalOptions="Center" VerticalOptions="Center"/>
+        <Button x:Name="btnClass" Text="Class Demo" HorizontalOptions="Center" VerticalOptions="Center"/>
+        <Button x:Name="btnCss" Text="Css Demo" HorizontalOptions="Center" VerticalOptions="Center"/>
+    </StackLayout>
+
+</ContentPage>

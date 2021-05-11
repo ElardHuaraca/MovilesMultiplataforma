@@ -1,0 +1,27 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:local="clr-namespace:Lab08.Components"
+             x:Class="Lab08.Views.ImplicitDemo">
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <Style TargetType="Entry">
+                <Setter Property="HorizontalOptions" Value="Fill"/>
+                <Setter Property="VerticalOptions" Value="CenterAndExpand"/>
+                <Setter Property="BackgroundColor" Value="Yellow"/>
+                <Setter Property="FontAttributes" Value="Italic"/>
+                <Setter Property="TextColor" Value="Blue"/>
+            </Style>
+        </ResourceDictionary>
+    </ContentPage.Resources>
+    <ContentPage.Content>
+        <StackLayout Padding="0,20,0,0">
+            <Entry Text="Estos entries" />
+            <Entry Text="estan demostrando"/>
+            <Entry Text="los estilos implicitos"/>
+            <Entry Text="y un implicit style override" BackgroundColor="Lime"
+                   TextColor="Red"/>
+            <local:CustomEntry Text="Este es una clase que ereda de entry y no es afectado"/>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>
