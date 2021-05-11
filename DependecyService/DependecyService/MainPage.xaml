@@ -1,0 +1,18 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="DependecyService.MainPage">
+
+    <StackLayout>
+        <Button x:Name="btnSpeaker" Text="Speaker"
+                VerticalOptions="Center"
+                HorizontalOptions="CenterAndExpand"></Button>
+        <Button x:Name="btnBattery" Text="Battery"
+                VerticalOptions="Center"
+                HorizontalOptions="CenterAndExpand"></Button>
+        <Button x:Name="btnScaner" Text="Escaner"
+                VerticalOptions="Center"
+                HorizontalOptions="CenterAndExpand"></Button>
+    </StackLayout>
+
+</ContentPage>
