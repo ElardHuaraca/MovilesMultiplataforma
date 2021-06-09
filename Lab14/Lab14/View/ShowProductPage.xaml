@@ -8,6 +8,7 @@
     </ContentPage.BindingContext>
     <ContentPage.ToolbarItems>
         <ToolbarItem IconImageSource="editar.png" Order="Primary" Priority="0"/>
+        <ToolbarItem IconImageSource="trash.png" Order="Primary" Priority="1"/>
     </ContentPage.ToolbarItems>
     <ContentPage.Resources>
         <ViewModel:InverseBoolConverter x:Key="InverseBoolConverter"/>
