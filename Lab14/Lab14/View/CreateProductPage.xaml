@@ -31,15 +31,17 @@
                     <ViewModel:NumericValidationBehavior/>
                 </Entry.Behaviors>
             </Entry>
-            <Picker Title="¿Disponible para delivery?" 
-                    SelectedItem="{Binding Delivery}">
-                <Picker.Items>
-                    <x:String>Disponible</x:String>
-                    <x:String>No Disponible</x:String>
-                </Picker.Items>
+            <Picker Title="¿Disponible para delivery?"
+                    SelectedIndex="{Binding Delivery}">
+                <Picker.ItemsSource>
+                    <x:Array Type="{x:Type x:String}">
+                        <x:String>No Disponible</x:String>
+                        <x:String>Disponible</x:String>
+                    </x:Array>
+                </Picker.ItemsSource>
             </Picker>
             <Button Text="Guardar"
-                    Command="{Binding test}"/>
+                    Command="{Binding CreateProduct}"/>
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>

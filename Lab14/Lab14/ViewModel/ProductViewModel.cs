@@ -51,20 +51,12 @@ namespace Lab14.ViewModel
             get { return this.stock; }
             set { SetValue(ref this.stock, value); }
         }
-        public string Delivery
+        public bool Delivery
         {
             get { return this.dispo_delivery; }
             set 
             {
-                System.Diagnostics.Debug.WriteLine("###################################### " + value);
-                if (value.Equals("Disponible"))
-                {
-                    SetValue(ref this.dispo_delivery, true);
-                }
-                else 
-                {
-                    SetValue(ref this.dispo_delivery, false);
-                }
+                SetValue(ref this.dispo_delivery, value);
             }
         }
         #endregion Properties

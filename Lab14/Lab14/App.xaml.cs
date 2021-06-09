@@ -13,7 +13,7 @@ namespace Lab14
         {
             InitializeComponent();
 
-            GetContext().Database.EnsureDeleted();
+            //GetContext().Database.EnsureDeleted();
             GetContext().Database.EnsureCreated();
             //MainPage = new MainPage();
             MainPage = new NavigationPage(new MainPage());
