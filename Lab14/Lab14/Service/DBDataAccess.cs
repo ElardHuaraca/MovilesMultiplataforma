@@ -60,21 +60,33 @@ namespace Lab14.Service
                 return query.ToList();
             }
         }
-        public void Update(T entity) 
+        public bool Update(T entity) 
         {
-            _context.Entry(entity).State = EntityState.Modified;
-            _context.Set<T>().Attach(entity);
-            _context.SaveChanges();
+            bool state = false;
+            try
+            {
+                _context.Update(entity);
+                _context.SaveChanges();
+                state = true;
+            }
+            catch (Exception) { throw; }
+            return state;
         }
-        public void Delete(T entity)
+        public bool Delete(Expression<Func<T, bool>> predicate)
         {
-            T existing = _context.Set<T>().Find(entity);
-
+            bool state = false;
+            T existing = _context.Set<T>().Where(predicate).FirstOrDefault();
             if (existing != null)
             {
-                _context.Set<T>().Remove(existing);
-                _context.SaveChanges();
+                try
+                {
+                    _context.Set<T>().Remove(existing);
+                    _context.SaveChanges();
+                    state = true;
+                }
+                catch (Exception) { throw; }
             }
+            return state;
         }
 
     }

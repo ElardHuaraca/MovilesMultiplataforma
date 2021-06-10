@@ -7,8 +7,8 @@
         <ViewModel:ProductViewModel/>
     </ContentPage.BindingContext>
     <ContentPage.ToolbarItems>
-        <ToolbarItem IconImageSource="editar.png" Order="Primary" Priority="0"/>
-        <ToolbarItem IconImageSource="trash.png" Order="Primary" Priority="1"/>
+        <ToolbarItem IconImageSource="editar.png" Order="Primary" Priority="0" Command="{Binding EditProduct}"/>
+        <ToolbarItem IconImageSource="trash.png" Order="Primary" Priority="1" Command="{Binding DeleteProduct}"/>
     </ContentPage.ToolbarItems>
     <ContentPage.Resources>
         <ViewModel:InverseBoolConverter x:Key="InverseBoolConverter"/>
@@ -24,7 +24,8 @@
             <ListView
                 ItemsSource="{Binding Productos}"
                 HasUnevenRows="True"            
-                SeparatorVisibility="None">
+                SeparatorVisibility="None"
+                SelectedItem="{Binding Producto}">
                 <ListView.ItemTemplate>
                     <DataTemplate>
                         <ViewCell>
@@ -47,7 +48,7 @@
                                     <Label
                                         Grid.Row="0"
                                         Grid.Column="1"
-                                        Text="{Binding CodigoProd}"/>
+                                        Text="{Binding ProductoId}"/>
                                     <Label
                                         Grid.Row="1"
                                         Grid.Column="0"

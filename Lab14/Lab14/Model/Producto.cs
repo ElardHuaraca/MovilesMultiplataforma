@@ -7,8 +7,7 @@ namespace Lab14.Model
 {
     public class Producto
     {
-        [Key]
-        public string CodigoProd { get; set; }
+        public int ProductoId { get; set; }
         public string Nombre { get; set; }
         public DateTime Fech_Restblecido { get; set; }
         public int Stock { get; set; }

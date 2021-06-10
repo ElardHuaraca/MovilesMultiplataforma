@@ -1,5 +1,6 @@
 ﻿using Lab14.Model;
 using Lab14.Service;
+using Lab14.View;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -18,7 +19,9 @@ namespace Lab14.ViewModel
 
         #region Attribute
         private ObservableCollection<Producto> productos;
-        private string idProd;
+        private ObservableCollection<Producto> productosfind;
+        private Producto producto;
+        private int idProd;
         private string nombre;
         private DateTime fechaRestablecimiento;
         private int stock;
@@ -31,7 +34,17 @@ namespace Lab14.ViewModel
             get { return this.productos; }
             set { SetValue(ref this.productos, value); }
         }
-        public string IdProd
+        public ObservableCollection<Producto> ProductosFind
+        {
+            get { return this.productosfind; }
+            set { SetValue(ref this.productosfind, value); }
+        }
+        public Producto Producto
+        {
+            get { return this.producto; }
+            set { SetValue(ref this.producto, value); }
+        }
+        public int IdProd
         {
             get { return this.idProd; }
             set { SetValue(ref this.idProd, value); }
@@ -70,7 +83,7 @@ namespace Lab14.ViewModel
                 {
                     var Producto = new Producto()
                     {
-                        CodigoProd = this.IdProd,
+                        ProductoId = this.IdProd,
                         Fech_Restblecido = this.Fecha,
                         Nombre = this.Nombre,
                         Stock = this.Stock,
@@ -82,10 +95,10 @@ namespace Lab14.ViewModel
                         {
                             await Application.Current.MainPage.DisplayAlert("Producto creado correctamente",
                                 $"Producto : { this.Nombre }" + $" creado correctamente en la BD", "OK");
-                            this.IdProd = string.Empty;
+                            this.IdProd = 1;
                             this.Nombre = string.Empty;
                             this.Fecha = DateTime.Now;
-                            this.Stock = 0;
+                            this.Stock = 1;
                             this.Delivery = false;
                         }
                         else
@@ -99,14 +112,75 @@ namespace Lab14.ViewModel
             }
         }
 
-        public ICommand test
+        public ICommand EditProduct
+        {
+            get 
+            {
+                return new Command(async () => 
+                {
+                    if (this.Producto != null)
+                    {
+                        await Application.Current.MainPage.Navigation.PushAsync(new EditProductPage(this.Producto,this.dataServiceProducto));
+                    }
+                    else
+                    {
+                        await Application.Current.MainPage.DisplayAlert("Adevertencia¡",
+                            "Se debe escoger un producto primero", "OK");
+                    }
+                });
+            }
+        }
+
+        public void SearchChanged(object sender, TextChangedEventArgs arg)
+        {
+            
+        }
+        public ICommand DeleteProduct
         {
             get
             {
-                return new Command( () =>
+                return new Command( async () =>
                 {
-                    Console.WriteLine(this.Fecha);
-                    Console.WriteLine(this.Delivery);
+                    if (this.Producto != null)
+                    {
+
+                        bool answer = await Application.Current.MainPage.DisplayAlert("Confirmacion"
+                            ,$"¿Desea eliminar el producto: { this.Producto.Nombre }?","Si","No");
+                        if (answer)
+                        {
+                            if (!this.dataServiceProducto.Delete(x => x.ProductoId == this.Producto.ProductoId))
+                            {
+                                await Application.Current.MainPage.DisplayAlert("Ocurrio un error",
+                                "Se produjo un error al intentar eliminar el producto", "OK");
+                            }
+                            else
+                            {
+                                await Application.Current.MainPage.DisplayAlert("Producto Eliminado",
+                                $"Se elimino correctamente el producto: { this.Producto.Nombre }", "OK");
+                                this.Producto = null;
+                                LoadProductos();
+                            }
+                        }
+                    }
+                    else
+                    {
+                        await Application.Current.MainPage.DisplayAlert("Adevertencia¡",
+                            "Se debe escoger un producto primero", "OK");
+                    }
+                });
+            }
+        }
+
+        public ICommand Search
+        {
+            get 
+            {
+                return new Command<string>((text) =>
+                {
+                    Console.WriteLine("sads :" + text);
+                    var products = this.dataServiceProducto.Get((x => x.Nombre.Contains(text))).ToList();
+                    Console.WriteLine(products);
+                    this.ProductosFind = new ObservableCollection<Producto>(products);
                 });
             }
         }
@@ -126,6 +200,15 @@ namespace Lab14.ViewModel
             this.dataServiceProducto = new DBDataAccess<Producto>();
             this.Fecha = DateTime.Now;
             this.LoadProductos();
+            MessagingCenter.Subscribe<string>(this, "completado", (arg) =>
+              {
+                  if (arg.Equals("OK"))
+                  {
+                      this.LoadProductos();
+                      this.ProductosFind = null;
+                      this.Producto = null;
+                  }
+              });
         }
         #endregion Constructor
     }

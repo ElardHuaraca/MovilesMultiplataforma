@@ -2,10 +2,7 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:ViewModel="clr-namespace:Lab14.ViewModel"
-             x:Class="Lab14.View.CreateProductPage">
-    <ContentPage.BindingContext>
-        <ViewModel:ProductViewModel />
-    </ContentPage.BindingContext>
+             x:Class="Lab14.View.EditProductPage">
     <ContentPage.Content>
         <StackLayout>
             <StackLayout.Padding>
@@ -17,27 +14,28 @@
             <Label Text="Producto :" />
             <Label Text="ID Producto" />
             <Entry Placeholder="ID"
-                   Text="{Binding IdProd}"
-                   Keyboard="Numeric">
+                   Text="{Binding Producto.ProductoId}"
+                   IsReadOnly="True"
+                   >
                 <Entry.Behaviors>
                     <ViewModel:NumericValidationBehavior/>
                 </Entry.Behaviors>
             </Entry>
             <Label Text="Nombre" />
             <Entry Placeholder="Nombre"
-                   Text="{Binding Nombre}"/>
+                   Text="{Binding Producto.Nombre}"/>
             <Label Text="Fecha Reestablecimiento producto" />
-            <DatePicker Date="{Binding Fecha}"/>
+            <DatePicker Date="{Binding Producto.Fech_Restblecido}"/>
             <Label Text="Stock" />
             <Entry Placeholder="Stock"
-                   Text="{Binding Stock}"
+                   Text="{Binding Producto.Stock}"
                    Keyboard="Numeric">
                 <Entry.Behaviors>
                     <ViewModel:NumericValidationBehavior/>
                 </Entry.Behaviors>
             </Entry>
             <Picker Title="¿Disponible para delivery?"
-                    SelectedIndex="{Binding Delivery}">
+                    SelectedIndex="{Binding Producto.Dispo_Delivery}">
                 <Picker.ItemsSource>
                     <x:Array Type="{x:Type x:String}">
                         <x:String>No Disponible</x:String>
@@ -45,8 +43,8 @@
                     </x:Array>
                 </Picker.ItemsSource>
             </Picker>
-            <Button Text="Guardar"
-                    Command="{Binding CreateProduct}"/>
+            <Button Text="Actualizar Producto"
+                    Command="{Binding UpadteProduct}"/>
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>
