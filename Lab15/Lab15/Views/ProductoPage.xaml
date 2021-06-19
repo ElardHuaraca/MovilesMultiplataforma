@@ -1,0 +1,18 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Lab15.Views.ProductoPage">
+    <ContentPage.Content>
+        <StackLayout Margin="20">
+            <Label Text="Nombre"/>
+            <Entry Text="{Binding Path=descripcion}"
+                   Placeholder="Nombre del Producto"/>
+            <Label Text="Precio" />
+            <Entry Text="{Binding Path=precio}"
+                   Placeholder="Precio del Producto"/>
+            <Button Text="Save" Clicked="OnSaveButtonClicked"/>
+            <Button Text="Delete" Clicked="OnDeleteButtonClicked"/>
+            <Button Text="Cancel" Clicked="OnCancelButtonClicked"/>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>
