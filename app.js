@@ -8,7 +8,7 @@ const db = require('./model/dbconnection')
 
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
-var studentsRouter = require('./routes/student');
+var studentRouter = require('./routes/student');
 
 var app = express();
 
@@ -25,7 +25,7 @@ app.use(cors());
 
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
-app.use('/api/student', studentsRouter);
+app.use('/api/student', studentRouter);
 
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {

@@ -1,4 +1,4 @@
-let db = require('../models/dbconection');
+let db = require('../model/dbconnection');
 const fs = require('fs');
 
 let student = {

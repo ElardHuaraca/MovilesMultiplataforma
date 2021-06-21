@@ -15,3 +15,5 @@ router.get('/show/:id', function (req, res, next) {
 router.post('/', multipart_middleware, function (req, res) {
     controller.store(req, res, multipart_middleware);
 });
+
+module.exports = router;
