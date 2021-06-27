@@ -12,7 +12,7 @@ conn.connect(function (err) {
         console.log("error: " + err);
     }
 
-    let sqlstudent = "CREATE TABLE IF NOT EXISTS STUDENTS(" +
+    let sqlstudent = "CREATE TABLE IF NOT EXISTS students(" +
         "StudentID INT PRIMARY KEY," +
         "Name VARCHAR(200) NOT NULL," +
         "Paternal_Surname VARCHAR(200) NOT NULL," +
@@ -25,8 +25,8 @@ conn.connect(function (err) {
         }
     });
 
-    let sqlimage = "CREATE TABLE IF NOT EXISTS IMAGES(" +
-        "ImageID INT PRIMARY KEY," +
+    let sqlimage = "CREATE TABLE IF NOT EXISTS images(" +
+        "ImageID INT PRIMARY KEY AUTO_INCREMENT," +
         "Name VARCHAR(200) NOT NULL," +
         "StudentID INT NOT NULL)";
     conn.query(sqlimage, function (err, result) {
