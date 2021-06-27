@@ -1,12 +1,68 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:ViewModel="clr-namespace:Lab16.ViewModel"
              x:Class="Lab16.View.ShowStudentPage">
+    <ContentPage.BindingContext>
+        <ViewModel:StudentViewModel/>
+    </ContentPage.BindingContext>
+    <ContentPage.ToolbarItems>
+        <ToolbarItem IconImageSource="edit.png" Order="Primary" Priority="0" Command="{Binding EditProduct}"/>
+        <ToolbarItem IconImageSource="trash.png" Order="Primary" Priority="1" Command="{Binding DeleteProduct}"/>
+    </ContentPage.ToolbarItems>
     <ContentPage.Content>
         <StackLayout>
-            <Label Text="Welcome to Xamarin.Forms!"
-                VerticalOptions="CenterAndExpand" 
-                HorizontalOptions="CenterAndExpand" />
-        </StackLayout>
+            <StackLayout.Padding>
+                <OnPlatform
+                    x:TypeArguments="Thickness"
+                    Android="20"
+                    iOS="50"/>
+            </StackLayout.Padding>
+            <ListView
+            ItemsSource="{Binding Students}"
+            HasUnevenRows="True"
+            SeparatorVisibility="None"
+            SelectedItem="{Binding Student}">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell>
+                            <Frame
+                                CornerRadius="20"
+                                HasShadow="True"
+                                Margin="3">
+                                <StackLayout Orientation="Vertical">
+                                    <Grid VerticalOptions="CenterAndExpand">
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="Auto" />
+                                            <ColumnDefinition Width="Auto" />
+                                        </Grid.ColumnDefinitions>
+                                    </Grid>
+                                    <Image
+                                        Grid.Row="0"
+                                        Grid.Column="0"
+                                        Source="{Binding Image, StringFormat='http://192.168.100.22:3000/images/{0}'}"
+                                        />
+                                    <Label
+                                        Grid.Row="1"
+                                        Grid.Column="0"
+                                        Text="{Binding Name}"
+                                        FontAttributes="Bold" />
+                                    <Label
+                                        Grid.Row="2"
+                                        Grid.Column="0"
+                                        Text="{Binding Paternal_Surname}"
+                                        FontAttributes="Bold" />
+                                    <Label
+                                        Grid.Row="2"
+                                        Grid.Column="1"
+                                        Text="{Binding Maternal_Surname}"
+                                        FontAttributes="Bold"/>
+                                </StackLayout>
+                            </Frame>
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+       </StackLayout>
     </ContentPage.Content>
 </ContentPage>
