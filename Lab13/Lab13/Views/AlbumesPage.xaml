@@ -7,6 +7,9 @@
     <ContentPage.BindingContext>
         <ViewModel:AlbumesViewModel/>
     </ContentPage.BindingContext>
+    <ContentPage.ToolbarItems>
+        <ToolbarItem Text="Eliminar" Order="Primary" Priority="1" Command="{Binding Delete}"/>
+    </ContentPage.ToolbarItems>
     <ContentPage.Content>
         <StackLayout>
             <StackLayout.Padding>
@@ -18,7 +21,8 @@
             <ListView
                 ItemsSource="{Binding Albumes}"
                 HasUnevenRows="True"            
-                SeparatorVisibility="None">
+                SeparatorVisibility="None"
+                SelectedItem="{Binding Album}">
                 <ListView.ItemTemplate>
                     <DataTemplate>
                         <ViewCell>

@@ -21,6 +21,7 @@ namespace Lab13.ViewModels
         private ObservableCollection<Artista> artistas;
         private ObservableCollection<Album> albumes;
         private Artista selectedArtista;
+        private Album album;
         private string titulo;
         private double precio;
         private int año;
@@ -41,6 +42,11 @@ namespace Lab13.ViewModels
         {
             get { return this.selectedArtista; }
             set { SetValue(ref this.selectedArtista, value); }
+        }
+        public Album Album 
+        { 
+            get { return this.album; }
+            set { SetValue(ref this.album, value); }
         }
         public string Titulo
         {
@@ -106,6 +112,17 @@ namespace Lab13.ViewModels
                 });
             }
         }
+
+        public ICommand Delete
+        {
+            get
+            {
+                return new Command(() =>
+                {
+                    this.dataServiceAlbumes.Delete(x => x.AlbumID == this.Album.AlbumID);
+                });
+            }
+        }
         #endregion Commands
 
         #region Methods
@@ -116,7 +133,7 @@ namespace Lab13.ViewModels
         }
         private void LoadAlbumes()
         {
-            var albumesDB = this.dataServiceAlbumes.Get(null, null, "Artista").ToList() as List<Album>;
+            var albumesDB = this.dataServiceAlbumes.Get().ToList();
             this.Albumes = new ObservableCollection<Album>(albumesDB);
         }
         private void CreateArtistas()
@@ -130,7 +147,6 @@ namespace Lab13.ViewModels
 
             this.dataServiceArtistas.SaveList(artistas);
         }
-
         #endregion Methods
     }
 }

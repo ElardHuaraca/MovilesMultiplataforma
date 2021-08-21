@@ -70,9 +70,9 @@ namespace Lab13.Services
             _context.SaveChanges();
         }
 
-        public void Delete(T entity)
+        public void Delete(Expression<Func<T, bool>> predicate)
         {
-            T existing = _context.Set<T>().Find(entity);
+            T existing = _context.Set<T>().Where(predicate).FirstOrDefault();
             if (existing != null)
             {
                 _context.Set<T>().Remove(existing);
