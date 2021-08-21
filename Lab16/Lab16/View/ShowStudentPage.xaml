@@ -31,32 +31,65 @@
                                 HasShadow="True"
                                 Margin="3">
                                 <StackLayout Orientation="Vertical">
+                                    <Image
+                                        Source="{Binding Image, StringFormat='http://192.168.100.22:3000/images/{0}'}"
+                                        HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand"
+                                        />
                                     <Grid VerticalOptions="CenterAndExpand">
                                         <Grid.ColumnDefinitions>
-                                            <ColumnDefinition Width="Auto" />
-                                            <ColumnDefinition Width="Auto" />
+                                            <ColumnDefinition Width="Auto"/>
                                         </Grid.ColumnDefinitions>
+                                        <Label
+                                            Grid.Row="0"
+                                            Grid.Column="0"
+                                            Text="Name :"
+                                            FontAttributes="Bold"/>
+                                        <Label
+                                            Grid.Row="0"
+                                            Grid.Column="1"
+                                            Text="{Binding Name}"
+                                            FontAttributes="Bold" />
+                                        <Label
+                                            Grid.Row="1"
+                                            Grid.Column="0"
+                                            Text="Paternal Surname :"
+                                            FontAttributes="Bold" />
+                                        <Label
+                                            Grid.Row="1"
+                                            Grid.Column="1"
+                                            Text="{Binding Paternal_Surname}"
+                                            FontAttributes="Bold" />
+                                        <Label
+                                            Grid.Row="2"
+                                            Grid.Column="0"
+                                            Text="Maternal Surname :"
+                                            FontAttributes="Bold" />
+                                        <Label
+                                            Grid.Row="2"
+                                            Grid.Column="1"
+                                            Text="{Binding Maternal_Surname}"
+                                            FontAttributes="Bold"/>
+                                        <Label
+                                            Grid.Row="3"
+                                            Grid.Column="0"
+                                            Text="Address :"
+                                            FontAttributes="Bold" />
+                                        <Label
+                                            Grid.Row="3"
+                                            Grid.Column="1"
+                                            Text="{Binding Address}"
+                                            FontAttributes="Bold"/>
+                                        <Label
+                                            Grid.Row="4"
+                                            Grid.Column="0"
+                                            Text="Birth Date :"
+                                            FontAttributes="Bold" />
+                                        <Label
+                                            Grid.Row="4"
+                                            Grid.Column="1"
+                                            Text="{Binding Birth_Date,StringFormat='{0:dd MMMM, yyyy}'}"
+                                            FontAttributes="Bold"/>
                                     </Grid>
-                                    <Image
-                                        Grid.Row="0"
-                                        Grid.Column="0"
-                                        Source="{Binding Image, StringFormat='http://192.168.100.22:3000/images/{0}'}"
-                                        />
-                                    <Label
-                                        Grid.Row="1"
-                                        Grid.Column="0"
-                                        Text="{Binding Name}"
-                                        FontAttributes="Bold" />
-                                    <Label
-                                        Grid.Row="2"
-                                        Grid.Column="0"
-                                        Text="{Binding Paternal_Surname}"
-                                        FontAttributes="Bold" />
-                                    <Label
-                                        Grid.Row="2"
-                                        Grid.Column="1"
-                                        Text="{Binding Maternal_Surname}"
-                                        FontAttributes="Bold"/>
                                 </StackLayout>
                             </Frame>
                         </ViewCell>
